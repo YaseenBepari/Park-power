@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Feedback - Park & Power</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Same styling */
+        body { font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%); margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; }
+        .header { display: flex; justify-content: space-between; align-items: center; width: 100%; background-color: #333; padding: 10px 20px; color: #fff; }
+        .header h1 { font-size: 30px; margin: 0; }
+        .header nav { display: flex; gap: 15px; }
+        .header nav a { color: #fff; text-decoration: none; font-size: 16px; }
+        .header nav a:hover { text-decoration: underline; }
+        .card { background: #ffffff; padding: 30px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); width: 100%; max-width: 500px; margin-top: 30px; }
+        .card h2 { text-align: center; color: #333; margin-bottom: 20px; }
+        textarea, input { width: 100%; padding: 10px; margin: 10px 0; font-size: 16px; }
+        button { width: 100%; padding: 12px; background-color: #66a6ff; border: none; border-radius: 5px; font-size: 18px; color: white; margin-top: 10px; }
+        button:hover { background-color: #4e8ecb; }
+        footer { margin-top: 20px; font-size: 14px; color: #fff; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🚗 Park & Power ⚡</h1>
+        <nav>
+            <a href="{{ url_for('sign_in') }}">Sign In</a>
+            <a href="{{ url_for('sign_up') }}">Sign Up</a>
+            <a href="{{ url_for('about_us') }}">About Us</a>
+            <a href="{{ url_for('feedback') }}">Feedback</a>
+        </nav>
+    </div>
+
+    <div class="card">
+        <h2>Feedback</h2>
+        <form>
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea rows="5" placeholder="Your Feedback" required></textarea>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <footer>
+        &copy; 2025 Park & Power. All Rights Reserved.
+    </footer>
+</body>
+</html>

@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - Park & Power</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: url('static/Untitled design (1).png') no-repeat center center fixed;
+      background-size: cover;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(0, 196, 180, 0.2), rgba(0, 0, 0, 0.4));
+      z-index: 1;
+    }
+
+    /* Header Styles */
+    .header {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      padding: 15px 30px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      backdrop-filter: blur(5px);
+    }
+
+    .header h1 {
+      color: #fff;
+      font-size: 24px;
+      font-weight: 700;
+      margin: 0;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    .header nav {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #00c4b4;
+      transform: translateY(-2px);
+    }
+
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 24px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .hamburger:hover {
+      transform: rotate(90deg);
+    }
+
+    /* Main Content */
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px;
+      z-index: 2;
+    }
+
+    h1 {
+      color: #fff;
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9);
+    }
+
+    .intro-section {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 30px;
+      max-width: 800px;
+      width: 90%;
+      text-align: center;
+      margin-bottom: 40px;
+      animation: fadeIn 1s ease-out;
+    }
+
+    .intro-section h2 {
+      color: #fff;
+      font-size: 26px;
+      font-weight: 600;
+      margin-bottom: 15px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .intro-section p {
+      color: #e0f7fa;
+      font-size: 16px;
+      line-height: 1.6;
+      margin: 0;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    .team-section {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: nowrap; /* Forces team members to stay in one line */
+      max-width: 1200px;
+      overflow-x: auto; /* Adds horizontal scroll for smaller screens if needed */
+      padding: 10px;
+    }
+
+    .team-member {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 20px;
+      text-align: center;
+      flex: 0 0 250px; /* Fixed width for each team member */
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: fadeIn 1s ease-out;
+    }
+
+    .team-member:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .team-member img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      margin-bottom: 15px;
+      object-fit: cover;
+      border: 3px solid #00c4b4;
+      transition: transform 0.3s ease;
+    }
+
+    .team-member:hover img {
+      transform: scale(1.1);
+    }
+
+    .team-member h3 {
+      color: #fff;
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 5px;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    .team-member .role {
+      color: #e0f7fa;
+      font-size: 14px;
+      font-weight: 400;
+      margin-bottom: 10px;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 10px;
+    }
+
+    .social-links a {
+      color: #fff;
+      font-size: 18px;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    .social-links a:hover {
+      color: #00c4b4;
+      transform: scale(1.2);
+    }
+
+    /* Footer Styles */
+    footer {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      padding: 20px 0;
+      box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(5px);
+      z-index: 2;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 30px;
+      flex-wrap: wrap;
+    }
+
+    .footer-content p {
+      color: #fff;
+      font-size: 14px;
+      margin: 0;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    .footer-content .social-icons {
+      display: flex;
+      gap: 15px;
+    }
+
+    .footer-content .social-icons a {
+      color: #fff;
+      font-size: 18px;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    .footer-content .social-icons a:hover {
+      color: #00c4b4;
+      transform: scale(1.2);
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      main {
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 26px;
+        margin-bottom: 20px;
+      }
+
+      .intro-section {
+        padding: 20px;
+      }
+
+      .intro-section h2 {
+        font-size: 22px;
+      }
+
+      .intro-section p {
+        font-size: 14px;
+      }
+
+      .team-section {
+        flex-wrap: wrap; /* Revert to wrapping on smaller screens */
+        justify-content: center;
+      }
+
+      .team-member {
+        flex: 0 0 200px; /* Slightly smaller width for smaller screens */
+      }
+
+      .team-member img {
+        width: 120px;
+        height: 120px;
+      }
+
+      .team-member h3 {
+        font-size: 18px;
+      }
+
+      .team-member .role {
+        font-size: 12px;
+      }
+
+      .social-links a {
+        font-size: 16px;
+      }
+
+      .header {
+        padding: 10px 20px;
+      }
+
+      .header h1 {
+        font-size: 20px;
+      }
+
+      .hamburger {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background: rgba(0, 0, 0, 0.9);
+        width: 200px;
+        flex-direction: column;
+        padding: 15px;
+        border-radius: 0 0 0 10px;
+        box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(5px);
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .nav-links a {
+        padding: 10px 0;
+        font-size: 14px;
+      }
+
+      .footer-content {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+      }
+
+      .footer-content p {
+        font-size: 12px;
+      }
+
+      .footer-content .social-icons a {
+        font-size: 16px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 22px;
+      }
+
+      .intro-section h2 {
+        font-size: 20px;
+      }
+
+      .intro-section p {
+        font-size: 12px;
+      }
+
+      .team-section {
+        flex-wrap: wrap; /* Ensure wrapping for very small screens */
+      }
+
+      .team-member {
+        flex: 0 0 90%; /* Full width for very small screens */
+        max-width: 250px;
+      }
+
+      .header h1 {
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>🚗 Park & Power ⚡</h1>
+    <nav>
+      <button class="hamburger" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="nav-links">
+        <a href="{{ url_for('home') }}">Home</a>
+        <a href="{{ url_for('sign_in') }}">Sign In</a>
+        <a href="{{ url_for('sign_up') }}">Sign Up</a>
+        <a href="{{ url_for('about_us') }}">About</a>
+        <a href="{{ url_for('feedback') }}">Feedback</a>
+      </div>
+    </nav>
+  </div>
+
+  <main>
+    <h1>About Us</h1>
+    <div class="intro-section">
+      <h2>Park & Power Team</h2>
+      <p>
+        At Park & Power, we are revolutionizing the way you park and charge your electric vehicles. Our innovative wireless charging stations provide a seamless and efficient solution, allowing you to power up your EV effortlessly while parked. Combining cutting-edge technology with user-friendly design, our team is dedicated to making sustainable transportation more accessible and convenient for everyone.
+      </p>
+    </div>
+    <div class="team-section">
+      <div class="team-member">
+        <img src="static/YASEEN.jpeg" alt="Yaseen">
+        <h3>Yaseen</h3>
+        <p class="role">Software Developer</p>
+        <div class="social-links">
+          <a href="https://www.linkedin.com/in/yaseen-bepari-18a70725b/" target="_blank" aria-label="LinkedIn">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="https://www.instagram.com/yaseen_bepari_/" target="_blank" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="mailto:yaseenbepari2002@gmail.com" aria-label="Email">
+            <i class="fas fa-envelope"></i>
+          </a>
+        </div>
+      </div>
+      <div class="team-member">
+        <img src="static/SAMEER.jpg" alt="Sameer">
+        <h3>Sameer</h3>
+        <p class="role">Embedded Systems Engineer</p>
+        <div class="social-links">
+          <a href="https://www.linkedin.com/in/sameer-hongal-162a002b7?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" aria-label="LinkedIn">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="https://www.instagram.com/sameersam1433?igsh=MWwyY21vbDZ0NGFpdQ%3D%3D&utm_source=qr" target="_blank" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="mailto:sameerhongal16@gmail.com" aria-label="Email">
+            <i class="fas fa-envelope"></i>
+          </a>
+        </div>
+      </div>
+      <div class="team-member">
+        <img src="static/VEDANTH.jpg" alt="Vedanth">
+        <h3>Vedanth</h3>
+        <p class="role">IoT Specialist</p>
+        <div class="social-links">
+          <a href="https://www.linkedin.com/in/vedanth-gotur-37053a26b/" target="_blank" aria-label="LinkedIn">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="https://www.instagram.com/yaseen_bepari_/" target="_blank" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="mailto:ggvedanth@gmail.com" aria-label="Email">
+            <i class="fas fa-envelope"></i>
+          </a>
+        </div>
+      </div>
+      <div class="team-member">
+        <img src="static/WhatsApp Image 2025-05-26 at 5.51.37 PM.jpeg" alt="Veerangouda">
+        <h3>Veerangouda</h3>
+        <p class="role">Developer</p>
+        <div class="social-links">
+          <a href="https://www.linkedin.com/in/vedanth-gotur-37053a26b/" target="_blank" aria-label="LinkedIn">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="https://www.instagram.com/yaseen_bepari_/" target="_blank" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="mailto:ggvedanth@gmail.com" aria-label="Email">
+            <i class="fas fa-envelope"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <p>© 2025 Park & Power. All Rights Reserved.</p>
+      <div class="social-icons">
+        <a href="https://www.instagram.com/yaseen_bepari_/" target="_blank" aria-label="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="mailto:park.and.power.project@gmail.com" aria-label="Gmail">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <a href="https://www.facebook.com" target="_blank" aria-label="Facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://x.com/" target="_blank" aria-label="Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Hamburger menu toggle
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>

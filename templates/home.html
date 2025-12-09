@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Park & Power - Home</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      height: 100%;
+      width: 100%;
+      overflow-x: hidden;
+    }
+
+    .fullscreen-image {
+      position: relative;
+      height: 100vh;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start; /* Changed from center to flex-start */
+      overflow: hidden;
+      padding-top: 80px; /* Add padding to push content down */
+    }
+
+    .bg-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      min-height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      filter: brightness(0.6);
+    }
+
+    .overlay {
+      background: rgba(0, 0, 0, 0.6);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    .header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(51, 51, 51, 0.7);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      z-index: 3;
+      color: white;
+    }
+
+    .header h1 {
+      font-size: 24px;
+      margin: 0;
+    }
+
+    .header nav {
+      display: flex;
+      gap: 15px;
+    }
+
+    .header nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .header nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* Hamburger menu for mobile */
+    .hamburger {
+      display: none;
+      font-size: 24px;
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 15px;
+    }
+
+    .nav-links.active {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      width: 100%;
+      background: rgba(51, 51, 51, 0.9);
+      padding: 10px 0;
+      z-index: 3;
+    }
+
+    @media (max-width: 768px) {
+      .hamburger {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .header h1 {
+        font-size: 18px;
+      }
+
+      .header nav a {
+        font-size: 16px;
+        padding: 10px 20px;
+      }
+    }
+
+    .main-title {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: #66a6ff;
+      font-size: 36px;
+      font-weight: bold;
+      text-shadow: 2px 2px 5px #000;
+      margin-bottom: 15px;
+    }
+
+    .sub-title {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: #ffffff;
+      font-size: 18px;
+      text-shadow: 2px 2px 5px #000;
+      margin-bottom: 30px;
+    }
+
+    @media (max-width: 768px) {
+      .fullscreen-image {
+        padding-top: 60px; /* Slightly less padding on mobile due to smaller header */
+      }
+
+      .main-title {
+        font-size: 24px;
+      }
+
+      .sub-title {
+        font-size: 14px;
+      }
+    }
+
+    .departure-details {
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+      padding: 15px;
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('static/background-image.jpg');
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      z-index: 2;
+      gap: 20px;
+    }
+
+    .departure-details .card {
+      background-color: #fff;
+      border-radius: 12px;
+      padding: 15px;
+      width: 100%;
+      max-width: 300px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #slot2-details-card {
+      display: none;
+    }
+
+    .departure-details .card h2 {
+      color: #1e3a8a;
+      font-size: 1.3em;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .departure-details .detail-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+      padding: 6px 0;
+      border-bottom: 1px solid #e6f0fa;
+    }
+
+    .departure-details .detail-row .label {
+      color: #333;
+      font-weight: 600;
+      font-size: 0.85em;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .departure-details .detail-row .value {
+      color: #555;
+      font-size: 0.85em;
+    }
+
+    .departure-details .total-charge {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 10px 0;
+      padding: 8px;
+      background-color: #e6f0fa;
+      border-radius: 6px;
+      font-size: 0.95em;
+    }
+
+    .departure-details .total-charge .label {
+      color: #1e3a8a;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .departure-details .total-charge .value {
+      color: #1e3a8a;
+      font-weight: 700;
+    }
+
+    .departure-details .payment-btn {
+      background-color: #1e90ff;
+      color: #fff;
+      padding: 8px 15px;
+      border: none;
+      border-radius: 6px;
+      font-size: 0.9em;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.1s ease;
+      width: 100%;
+      max-width: 160px;
+      margin-top: 10px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      touch-action: manipulation;
+    }
+
+    .departure-details .payment-btn:hover,
+    .departure-details .payment-btn:focus {
+      background-color: #f59e0b;
+      transform: scale(1.02);
+    }
+
+    .departure-details .payment-btn:active {
+      transform: scale(0.98);
+    }
+
+    @media (max-width: 768px) {
+      .departure-details {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+      }
+
+      .departure-details .card {
+        padding: 10px;
+        max-width: 90%;
+      }
+
+      .departure-details .card h2 {
+        font-size: 1.1em;
+      }
+
+      .departure-details .detail-row .label,
+      .departure-details .detail-row .value {
+        font-size: 0.8em;
+      }
+
+      .departure-details .total-charge {
+        font-size: 0.85em;
+        padding: 6px;
+      }
+
+      .departure-details .payment-btn {
+        font-size: 0.85em;
+        padding: 8px 12px;
+        max-width: 150px;
+      }
+    }
+
+    #find-station {
+      background-color: #f1efef;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 60px 20px;
+      flex-wrap: wrap;
+    }
+
+    #find-station .left {
+      text-align: center;
+      max-width: 500px;
+    }
+
+    #find-station .logo {
+      font-size: 48px;
+      font-weight: 700;
+      color: #0096d6;
+    }
+
+    #find-station .logo .magnify {
+      position: relative;
+      display: inline-block;
+    }
+
+    #find-station .logo .magnify::after {
+      content: "🔍";
+      font-size: 36px;
+      position: absolute;
+      right: -30px;
+      top: -10px;
+    }
+
+    .search-box {
+      margin-top: 20px;
+    }
+
+    .search-box input {
+      padding: 15px;
+      width: 90%;
+      max-width: 400px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    .search-box button {
+      margin-top: 20px;
+      padding: 15px 40px;
+      font-size: 18px;
+      color: white;
+      background-color: #0096d6;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      touch-action: manipulation;
+    }
+
+    .search-box button:hover,
+    .search-box button:focus {
+      background-color: #007bb5;
+    }
+
+    #find-station .right img {
+      max-height: 400px;
+      max-width: 90%;
+    }
+
+    @media (max-width: 768px) {
+      #find-station {
+        padding: 40px 15px;
+      }
+
+      #find-station .left,
+      #find-station .right {
+        max-width: 100%;
+        margin-bottom: 20px;
+      }
+
+      #find-station .logo {
+        font-size: 36px;
+      }
+
+      #find-station .logo .magnify::after {
+        font-size: 28px;
+        right: -20px;
+        top: -5px;
+      }
+
+      .search-box input {
+        padding: 12px;
+        font-size: 14px;
+        width: 100%;
+        max-width: 300px;
+      }
+
+      .search-box button {
+        padding: 12px 30px;
+        font-size: 16px;
+      }
+    }
+
+    .why-us {
+      background-color: #f5faff;
+      padding: 40px 30px;
+      text-align: center;
+    }
+
+    .why-us h2 {
+      color: #1e3a8a;
+      font-size: 2.5em;
+      margin-bottom: 40px;
+      text-transform: uppercase;
+    }
+
+    .features {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .feature-card {
+      background-color: #e6f0fa;
+      border-radius: 10px;
+      width: 300px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    }
+
+    .feature-card.tapped {
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .feature-card.clicked {
+      background-color: #1e90ff;
+    }
+
+    .feature-card .icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 20px;
+      border: 2px solid #f59e0b;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 40px;
+      color: #1e3a8a;
+    }
+
+    .feature-card h3 {
+      color: #1e3a8a;
+      font-size: 1.5em;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    .feature-card p {
+      color: #333;
+      font-size: 1em;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 768px) {
+      .why-us {
+        padding: 20px 15px;
+      }
+
+      .why-us h2 {
+        font-size: 2em;
+      }
+
+      .feature-card {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto 20px;
+      }
+
+      .feature-card .icon {
+        width: 60px;
+        height: 60px;
+        font-size: 30px;
+      }
+
+      .feature-card h3 {
+        font-size: 1.3em;
+      }
+
+      .feature-card p {
+        font-size: 0.9em;
+      }
+    }
+
+    #feedback-section {
+      background: #f7f7f7;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    #feedback-section h2 {
+      font-size: 36px;
+      color: #333;
+      margin-bottom: 30px;
+    }
+
+    #feedback-section form {
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    #feedback-section input,
+    #feedback-section textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+      min-height: 48px;
+    }
+
+    #feedback-section textarea {
+      min-height: 120px;
+    }
+
+    #feedback-section button {
+      padding: 12px 20px;
+      background-color: #66a6ff;
+      border: none;
+      color: white;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      touch-action: manipulation;
+      min-height: 48px;
+    }
+
+    #feedback-section button:hover,
+    #feedback-section button:focus {
+      background-color: #4e8ecb;
+    }
+
+    @media (max-width: 768px) {
+      #feedback-section {
+        padding: 40px 15px;
+      }
+
+      #feedback-section h2 {
+        font-size: 28px;
+      }
+
+      #feedback-section input,
+      #feedback-section textarea {
+        font-size: 14px;
+        padding: 10px;
+      }
+
+      #feedback-section button {
+        font-size: 14px;
+        padding: 10px 18px;
+      }
+    }
+
+    footer {
+      background-color: #1e3a8a;
+      padding: 20px;
+      text-align: center;
+      font-family: Arial, sans-serif;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-content p {
+      color: #fff;
+      font-size: 1em;
+      margin: 0;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 15px;
+    }
+
+    .social-icons a {
+      color: #fff;
+      font-size: 1.5em;
+      transition: color 0.3s ease;
+      display: inline-block;
+      padding: 5px;
+    }
+
+    .social-icons a:hover,
+    .social-icons a:focus {
+      color: #f59e0b;
+    }
+
+    @media (max-width: 768px) {
+      .footer-content {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .footer-content p {
+        margin-bottom: 10px;
+        font-size: 0.9em;
+      }
+
+      .social-icons a {
+        font-size: 1.8em;
+        padding: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>🚗 Park & Power ⚡</h1>
+    <nav>
+      <button class="hamburger" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="nav-links">
+        <a href="{{ url_for('sign_in') }}">Sign In</a>
+        <a href="{{ url_for('sign_up') }}">Sign Up</a>
+        <a href="{{ url_for('about_us') }}">About</a>
+        <a href="{{ url_for('feedback') }}">Feedback</a>
+      </div>
+    </nav>
+  </div>
+
+  <div class="fullscreen-image">
+    <video autoplay muted loop playsinline class="bg-video">
+      <source src="{{ url_for('static', filename='9790135-hd_1920_1080_30fps.mp4') }}" type="video/mp4">
+    </video>
+    <div class="overlay"></div>
+    <div class="main-title">PARK & POWER</div>
+    <div class="sub-title">Wireless Charging Station for EVs</div>
+    <section class="departure-details">
+      <div class="card" id="slot1-details-card">
+        <h2><i class="fas fa-car-side"></i> Slot 1 Departure Details</h2>
+        <div id="slot1-vehicles"></div>
+      </div>
+      <div class="card" id="slot2-details-card">
+        <h2><i class="fas fa-car-side"></i> Slot 2 Departure Details</h2>
+        <div id="slot2-vehicles"></div>
+      </div>
+    </section>
+  </div>
+
+  <section id="find-station">
+    <div class="left">
+      <div class="logo">
+        FIND<span class="magnify">S</span><br>STATION
+      </div>
+      <div class="search-box">
+        <input type="text" id="location-input" placeholder="Search for a city or street address">
+        <br>
+        <button onclick="openGoogleMaps()">LET’S GO</button>
+      </div>
+    </div>
+    <div class="right">
+      <img src="static/find-parking-img.png" alt="Parking Sign">
+    </div>
+  </section>
+
+  <section class="why-us" id="why-us">
+    <h2>Why Us?</h2>
+    <div class="features">
+      <div class="feature-card">
+        <div class="icon">🔌</div>
+        <h3>Seamless Charging</h3>
+        <p>Park and Power integrates wireless EV charging directly into parking spaces, ensuring effortless power delivery while you park.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">🅿️</div>
+        <h3>Smart Parking</h3>
+        <p>Our IoT platform optimizes parking availability in smart cities, reducing search time and enhancing urban mobility.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">🌆</div>
+        <h3>Urban Efficiency</h3>
+        <p>Designed for smart cities, we tackle EV charging and parking challenges with a single, innovative full-stack solution.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="feedback-section">
+    <h2>Feedback</h2>
+    <form>
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea rows="5" placeholder="Your Feedback" required></textarea>
+      <button type="submit">Submit</button>
+    </form>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <p>© 2025 Park & Power. All Rights Reserved.</p>
+      <div class="social-icons">
+        <a href="https://www.instagram.com/yaseen_bepari_/" target="_blank" aria-label="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="mailto:park.and.power.project@gmail.com" aria-label="Gmail">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <a href="https://www.facebook.com" target="_blank" aria-label="Facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://x.com/" target="_blank" aria-label="Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const vehicles = [
+      // Slot 1 vehicles
+      {
+        parking_slot: "1",
+        vehicle_number: "VP-07-NA-6003",
+        contact_number: "+910276421070",
+        entry_time: "00:00:13",
+        exit_time: "00:00:45",
+        duration: "27 seconds",
+        total_charge: "₹3.19 (incl. GST)"
+      },
+      {
+        parking_slot: "1",
+        vehicle_number: "CK-73-AX-3074",
+        contact_number: "+919518611573",
+        entry_time: "00:08:21",
+        exit_time: "00:08:39",
+        duration: "13 seconds",
+        total_charge: "₹1.53 (incl. GST)"
+      },
+      {
+        parking_slot: "1",
+        vehicle_number: "XE-77-TN-3313",
+        contact_number: "+917583594753",
+        entry_time: "00:01:04",
+        exit_time: "00:02:12",
+        duration: "63 seconds",
+        total_charge: "₹7.43 (incl. GST)"
+      },
+      // Slot 2 vehicles
+      {
+        parking_slot: "2",
+        vehicle_number: "JI-77-QW-7806",
+        contact_number: "+910907682382",
+        entry_time: "00:00:59",
+        exit_time: "00:01:18",
+        duration: "15 seconds",
+        total_charge: "₹1.77 (incl. GST)"
+      },
+      {
+        parking_slot: "2",
+        vehicle_number: "IS-53-CL-2100",
+        contact_number: "+914464040351",
+        entry_time: "00:07:09",
+        exit_time: "00:07:27",
+        duration: "14 seconds",
+        total_charge: "₹1.65 (incl. GST)"
+      },
+      {
+        parking_slot: "2",
+        vehicle_number: "AS-05-CJ-9964",
+        contact_number: "+910525048368",
+        entry_time: "00:06:18",
+        exit_time: "00:07:01",
+        duration: "38 seconds",
+        total_charge: "₹4.48 (incl. GST)"
+      }
+    ];
+
+    function displaySlotVehicles() {
+      const slot1Vehicles = vehicles.filter(v => v.parking_slot === "1");
+      const slot2Vehicles = vehicles.filter(v => v.parking_slot === "2");
+
+      const slot1Container = document.getElementById("slot1-vehicles");
+      const slot2Container = document.getElementById("slot2-vehicles");
+      const slot2Card = document.getElementById("slot2-details-card");
+
+      function generateVehicleHTML(vehicle) {
+        return `
+          <div class="detail-row">
+            <span class="label"><i class="fas fa-parking"></i> Parking Slot:</span>
+            <span class="value">${vehicle.parking_slot}</span>
+          </div>
+          <div class="detail-row">
+            <span class="label"><i class="fas fa-car"></i> Vehicle Number:</span>
+            <span class="value">${vehicle.vehicle_number}</span>
+          </div>
+          <div class="detail-row">
+            <span class="label"><i class="fas fa-phone"></i> Contact Number:</span>
+            <span class="value">${vehicle.contact_number}</span>
+          </div>
+          <div class="detail-row">
+            <span class="label"><i class="fas fa-clock"></i> Entry Time:</span>
+            <span class="value">${vehicle.entry_time}</span>
+          </div>
+          <div class="detail-row">
+            <span class="label"><i class="fas fa-clock"></i> Exit Time:</span>
+            <span class="value">${vehicle.exit_time}</span>
+          </div>
+          <div class="detail-row">
+            <span class="label"><i class="fas fa-hourglass-half"></i> Duration:</span>
+            <span class="value">${vehicle.duration}</span>
+          </div>
+          <div class="total-charge">
+            <span class="label"><i class="fas fa-rupee-sign"></i> Total Charge:</span>
+            <span class="value">${vehicle.total_charge}</span>
+          </div>
+          <a href="{{ url_for('payment') }}" class="payment-btn">Proceed to Payment</a>
+        `;
+      }
+
+      // Randomly select one vehicle for Slot 1
+      if (slot1Vehicles.length > 0) {
+        const randomIndex = Math.floor(Math.random() * slot1Vehicles.length);
+        slot1Container.innerHTML = generateVehicleHTML(slot1Vehicles[randomIndex]);
+      } else {
+        slot1Container.innerHTML = '<p>No vehicles in Slot 1</p>';
+      }
+
+      // Delay Slot 2 by 15 seconds and randomly select one vehicle
+      setTimeout(() => {
+        if (slot2Vehicles.length > 0) {
+          const randomIndex = Math.floor(Math.random() * slot2Vehicles.length);
+          slot2Container.innerHTML = generateVehicleHTML(slot2Vehicles[randomIndex]);
+          slot2Card.style.display = 'block';
+        } else {
+          slot2Container.innerHTML = '<p>No vehicles in Slot 2</p>';
+          slot2Card.style.display = 'block';
+        }
+      }, 15000);
+    }
+
+    function openGoogleMaps() {
+      const input = document.getElementById('location-input').value.trim();
+      if (input) {
+        const query = encodeURIComponent(input);
+        window.open(`https://www.google.com/maps/search/?api=1&query=${query}`, '_blank');
+      } else {
+        alert('Please enter a city or address.');
+      }
+    }
+
+    // Hamburger menu toggle
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    // Feature cards tap effect for mobile
+    const featureCards = document.querySelectorAll('.feature-card');
+    featureCards.forEach(card => {
+      card.addEventListener('click', () => {
+        featureCards.forEach(c => {
+          c.classList.remove('tapped');
+          c.classList.remove('clicked');
+        });
+        card.classList.add('tapped');
+        card.classList.add('clicked');
+      });
+
+      // Remove hover class to prevent conflict on mobile
+      card.classList.remove('hovered');
+    });
+
+    window.onload = displaySlotVehicles;
+  </script>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up - Park & Power</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(to bottom, #a3cffa 50%, #4a90e2 100%);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            display: flex;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            width: 800px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .illustration-section {
+            width: 50%;
+            background: #e6f0fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .illustration-section img {
+            width: 80%;
+            height: auto;
+        }
+
+        .form-section {
+            padding: 40px;
+            width: 50%;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #4a90e2;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        .button-section {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        button, .secondary-button {
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button {
+            width: 50%;
+            background-color: #4a90e2;
+            color: white;
+        }
+
+        button:hover {
+            background-color: #3a7bc8;
+        }
+
+        .secondary-button {
+            width: 50%;
+            background-color: #e6f0fa;
+            color: #666;
+            text-decoration: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .secondary-button:hover {
+            background-color: #d6e0f5;
+        }
+
+        .link-section {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 20px;
+        }
+
+        .doctor-link {
+            text-decoration: none;
+            color: #4a90e2;
+            font-size: 14px;
+        }
+
+        .doctor-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+
+    <script>
+        function handleSignUp(event) {
+            event.preventDefault();
+            alert('Sign Up Successful!');
+            window.location.href = "{{ url_for('home') }}";
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="illustration-section">
+            <img src="static/image (2).jpg" alt="Park & Power Illustration">
+        </div>
+        <div class="form-section">
+            <div class="logo">Park & Power</div>
+            <h1>Sign Up</h1>
+            <form onsubmit="handleSignUp(event)">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" placeholder="Username" required>
+                </div>
+                <div class="form-group">
+                    <label for="gmail">Gmail</label>
+                    <input type="email" id="gmail" name="gmail" placeholder="Gmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="rfid">RFID Number</label>
+                    <input type="text" id="rfid" name="rfid" placeholder="RFID Number" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Password" required>
+                </div>
+                <div class="button-section">
+                    <button type="submit">Sign Up</button>
+                    <a href="{{ url_for('sign_in') }}" class="secondary-button">Click Here to Log In</a>
+                </div>
+            </form>
+            <div class="link-section">
+                <a class="doctor-link" href="{{ url_for('home') }}">Back to Home</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

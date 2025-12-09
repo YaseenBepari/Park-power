@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Credit Card Info</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      width: 400px;
+      padding: 40px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 10px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #5b9bd5;
+      margin-bottom: 30px;
+    }
+
+    label {
+      display: block;
+      text-align: left;
+      margin-bottom: 5px;
+      font-weight: bold;
+      color: #333;
+      font-size: 14px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    .row {
+      display: flex;
+      gap: 10px;
+    }
+
+    .row input {
+      flex: 1;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 12px;
+      background-color: #5b9bd5;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .submit-btn:hover {
+      background-color: #4a8ac9;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Credit Card Info</h2>
+    <form action="#">
+      <label for="amount">Amount</label>
+      <input type="text" id="amount" placeholder="₹.00" required>
+
+      <label for="name">Name on Card</label>
+      <input type="text" id="name" placeholder="Enter the name" required>
+
+      <label for="card-number">Card Number</label>
+      <input type="text" id="card-number" placeholder="0000-0000-0000-0000" required>
+
+      <div class="row">
+        <div>
+          <label for="exp-month">Expiration</label>
+          <input type="number" id="exp-month" placeholder="0" min="1" max="12" required>
+        </div>
+        <div>
+          <label for="exp-year">&nbsp;</label>
+          <input type="number" id="exp-year" placeholder="2000" min="2024" required>
+        </div>
+        <div>
+          <label for="cvv">CVV Number</label>
+          <input type="password" id="cvv" placeholder="•••" required>
+        </div>
+      </div>
+
+      <button class="submit-btn" type="submit">PAY</button>
+    </form>
+  </div>
+</body>
+</html>

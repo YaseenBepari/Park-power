@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Profile - Park & Power</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(to bottom, #a3cffa 50%, #4a90e2 100%);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            width: 800px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            padding: 40px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #4a90e2;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .profile-info {
+            margin-bottom: 20px;
+        }
+
+        .profile-info p {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .profile-info strong {
+            color: #666;
+        }
+
+        .link-section {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 20px;
+        }
+
+        .doctor-link {
+            text-decoration: none;
+            color: #4a90e2;
+            font-size: 14px;
+        }
+
+        .doctor-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+
+    <script>
+        window.onload = function() {
+            // Retrieve data from localStorage
+            const userData = JSON.parse(localStorage.getItem('userProfile')) || {};
+            
+            // Display data in the profile section
+            document.getElementById('profile-username').textContent = userData.username || 'N/A';
+            document.getElementById('profile-gmail').textContent = userData.gmail || 'N/A';
+            document.getElementById('profile-rfid').textContent = userData.rfid || 'N/A';
+            document.getElementById('profile-password').textContent = userData.password ? '*'.repeat(userData.password.length) : 'N/A';
+        };
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">Park & Power</div>
+        <h1>User Profile</h1>
+        <div class="profile-info">
+            <p><strong>Username:</strong> <span id="profile-username">N/A</span></p>
+            <p><strong>Gmail:</strong> <span id="profile-gmail">N/A</span></p>
+            <p><strong>RFID Number:</strong> <span id="profile-rfid">N/A</span></p>
+            <p><strong>Password:</strong> <span id="profile-password">N/A</span></p>
+        </div>
+        <div class="link-section">
+            <a class="doctor-link" href="{{ url_for('home') }}">Back to Home</a>
+        </div>
+    </div>
+</body>
+</html>
