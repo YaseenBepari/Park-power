@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -145,9 +146,11 @@
       display: flex;
       justify-content: center;
       gap: 30px;
-      flex-wrap: nowrap; /* Forces team members to stay in one line */
+      flex-wrap: nowrap;
+      /* Forces team members to stay in one line */
       max-width: 1200px;
-      overflow-x: auto; /* Adds horizontal scroll for smaller screens if needed */
+      overflow-x: auto;
+      /* Adds horizontal scroll for smaller screens if needed */
       padding: 10px;
     }
 
@@ -159,7 +162,8 @@
       border: 1px solid rgba(255, 255, 255, 0.2);
       padding: 20px;
       text-align: center;
-      flex: 0 0 250px; /* Fixed width for each team member */
+      flex: 0 0 250px;
+      /* Fixed width for each team member */
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       animation: fadeIn 1s ease-out;
     }
@@ -170,8 +174,15 @@
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .team-member img {
@@ -289,12 +300,14 @@
       }
 
       .team-section {
-        flex-wrap: wrap; /* Revert to wrapping on smaller screens */
+        flex-wrap: wrap;
+        /* Revert to wrapping on smaller screens */
         justify-content: center;
       }
 
       .team-member {
-        flex: 0 0 200px; /* Slightly smaller width for smaller screens */
+        flex: 0 0 200px;
+        /* Slightly smaller width for smaller screens */
       }
 
       .team-member img {
@@ -378,11 +391,13 @@
       }
 
       .team-section {
-        flex-wrap: wrap; /* Ensure wrapping for very small screens */
+        flex-wrap: wrap;
+        /* Ensure wrapping for very small screens */
       }
 
       .team-member {
-        flex: 0 0 90%; /* Full width for very small screens */
+        flex: 0 0 90%;
+        /* Full width for very small screens */
         max-width: 250px;
       }
 
@@ -392,6 +407,7 @@
     }
   </style>
 </head>
+
 <body>
   <div class="header">
     <h1>🚗 Park & Power ⚡</h1>
@@ -414,35 +430,41 @@
     <div class="intro-section">
       <h2>Park & Power Team</h2>
       <p>
-        At Park & Power, we are revolutionizing the way you park and charge your electric vehicles. Our innovative wireless charging stations provide a seamless and efficient solution, allowing you to power up your EV effortlessly while parked. Combining cutting-edge technology with user-friendly design, our team is dedicated to making sustainable transportation more accessible and convenient for everyone.
+        At Park & Power, we are revolutionizing the way you park and charge your electric vehicles. Our innovative
+        wireless charging stations provide a seamless and efficient solution, allowing you to power up your EV
+        effortlessly while parked. Combining cutting-edge technology with user-friendly design, our team is dedicated to
+        making sustainable transportation more accessible and convenient for everyone.
       </p>
     </div>
+
     <div class="team-section">
       <div class="team-member">
-        <img src="static/YASEEN.jpeg" alt="Yaseen">
-        <h3>Yaseen</h3>
-        <p class="role">Software Developer</p>
+        <img src="static\mosin.jpeg" alt="mosin">
+        <h3>Mohammed Mohsin</h3>
+        <p class="role">EEE Engineer</p>
         <div class="social-links">
-          <a href="https://www.linkedin.com/in/yaseen-bepari-18a70725b/" target="_blank" aria-label="LinkedIn">
+          <a href="https://www.linkedin.com/in/yaseen-" target="_blank" aria-label="LinkedIn">
             <i class="fab fa-linkedin"></i>
           </a>
-          <a href="https://www.instagram.com/yaseen_bepari_/" target="_blank" aria-label="Instagram">
+          <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram">
             <i class="fab fa-instagram"></i>
           </a>
-          <a href="mailto:yaseenbepari2002@gmail.com" aria-label="Email">
+          <a href="mailto:Mohammed Mohsin@gmail.com" aria-label="Email">
             <i class="fas fa-envelope"></i>
           </a>
         </div>
       </div>
       <div class="team-member">
-        <img src="static/SAMEER.jpg" alt="Sameer">
-        <h3>Sameer</h3>
-        <p class="role">Embedded Systems Engineer</p>
+        <img src="static\ass.jpeg" alt="Sameer">
+        <h3>Mohammed Husen Aftab</h3>
+        <p class="role">EEE Engineer</p>
         <div class="social-links">
-          <a href="https://www.linkedin.com/in/sameer-hongal-162a002b7?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" aria-label="LinkedIn">
+          <a href="https://www.linkedin.com/in/-162a002b7?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
+            target="_blank" aria-label="LinkedIn">
             <i class="fab fa-linkedin"></i>
           </a>
-          <a href="https://www.instagram.com/sameersam1433?igsh=MWwyY21vbDZ0NGFpdQ%3D%3D&utm_source=qr" target="_blank" aria-label="Instagram">
+          <a href="https://www.instagram.com/?igsh=MWwyY21vbDZ0NGFpdQ%3D%3D&utm_source=qr" target="_blank"
+            aria-label="Instagram">
             <i class="fab fa-instagram"></i>
           </a>
           <a href="mailto:sameerhongal16@gmail.com" aria-label="Email">
@@ -451,14 +473,14 @@
         </div>
       </div>
       <div class="team-member">
-        <img src="static/VEDANTH.jpg" alt="Vedanth">
-        <h3>Vedanth</h3>
-        <p class="role">IoT Specialist</p>
+        <img src="static\vinyak.jpeg" alt="Vedanth">
+        <h3>Vinayak</h3>
+        <p class="role">EEE Engineer</p>
         <div class="social-links">
-          <a href="https://www.linkedin.com/in/vedanth-gotur-37053a26b/" target="_blank" aria-label="LinkedIn">
+          <a href="https://www.linkedin.com/in/-gotur-37053a26b/" target="_blank" aria-label="LinkedIn">
             <i class="fab fa-linkedin"></i>
           </a>
-          <a href="https://www.instagram.com/yaseen_bepari_/" target="_blank" aria-label="Instagram">
+          <a href="https://www.instagram.com//" target="_blank" aria-label="Instagram">
             <i class="fab fa-instagram"></i>
           </a>
           <a href="mailto:ggvedanth@gmail.com" aria-label="Email">
@@ -466,22 +488,8 @@
           </a>
         </div>
       </div>
-      <div class="team-member">
-        <img src="static/WhatsApp Image 2025-05-26 at 5.51.37 PM.jpeg" alt="Veerangouda">
-        <h3>Veerangouda</h3>
-        <p class="role">Developer</p>
-        <div class="social-links">
-          <a href="https://www.linkedin.com/in/vedanth-gotur-37053a26b/" target="_blank" aria-label="LinkedIn">
-            <i class="fab fa-linkedin"></i>
-          </a>
-          <a href="https://www.instagram.com/yaseen_bepari_/" target="_blank" aria-label="Instagram">
-            <i class="fab fa-instagram"></i>
-          </a>
-          <a href="mailto:ggvedanth@gmail.com" aria-label="Email">
-            <i class="fas fa-envelope"></i>
-          </a>
-        </div>
-      </div>
+
+    </div>
     </div>
   </main>
 
@@ -514,4 +522,5 @@
     });
   </script>
 </body>
+
 </html>

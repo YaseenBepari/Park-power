@@ -192,7 +192,7 @@ def send_receipt_email():
         # Email configuration
         sender_email = "yaseenbepari2002@gmail.com"
         sender_password = "xngucuzcxabjgiqi"  # Replace with a valid app password
-        recipient_email = "yaseenbepari2002@gmail.com"  # Update as needed
+        recipient_email = "abrarsudarji339@gmail.com"  # Update as needed
 
         # Create email
         msg = MIMEMultipart()
